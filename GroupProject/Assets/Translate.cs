@@ -12,7 +12,7 @@ public class Translate : MonoBehaviour {
 	void Update () {
 		float moveSpeed = 5f;
 		transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
-		if (transform.position.y <= -23) {
+		if (transform.position.y <= -30) {
 			Destroy (gameObject);
 		}
 	}
