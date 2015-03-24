@@ -35,7 +35,7 @@ public class IPspawnV2 : MonoBehaviour {
 		
 	}
 
-	void Update()
+	/*void Update()
 	{
 		if (Input.GetMouseButton(1))
 			OnRightClick();
@@ -71,6 +71,6 @@ public class IPspawnV2 : MonoBehaviour {
 			}
 		}
 		//}
-		
-	}
+
+	}*/
 }
