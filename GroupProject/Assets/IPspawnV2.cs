@@ -35,7 +35,7 @@ public class IPspawnV2 : MonoBehaviour {
 		
 	}
 
-	/*void Update()
+	void Update()
 	{
 		if (Input.GetMouseButton(1))
 			OnRightClick();
@@ -52,25 +52,26 @@ public class IPspawnV2 : MonoBehaviour {
 		RaycastHit hitPoint;
 		
 		// See if the ray collided with an object
-		if (Physics.Raycast(clickPoint, out hitPoint))
+		if (Physics.Raycast(clickPoint, hitPoint, 5.0f))
 		{
 			// Make sure this object was the
 			// one that received the right-click
 			if (hitPoint.collider == this.GetComponent<Collider>())
 			{
-			for (int j = 0; j< 100; j++)
-			{
-				int capacity = Random.Range(0,11);
-				string capacityString = capacity.ToString();
-				string fileType = fileArray[Random.Range(0,fileArray.Length-1)];
-				otherInfo[j] = capacityString + fileType;
-				Debug.Log(capacityString + fileType);
-				capacityString = "";
-				fileType = "";
-			}
+				for (int j = 0; j< 100; j++)
+				{
+					int capacity = Random.Range(0,11);
+					string capacityString = capacity.ToString();
+					string fileType = fileArray[Random.Range(0,fileArray.Length-1)];
+					otherInfo[j] = capacityString + fileType;
+					Debug.Log(j);
+					Debug.Log(capacityString + fileType);
+					capacityString = "";
+					fileType = "";
+				}
 			}
 		}
 		//}
 
-	}*/
+	}
 }
