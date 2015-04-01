@@ -45,14 +45,14 @@ public class IPspawnV2 : MonoBehaviour {
 	void OnRightClick () {
 		string [] fileArray = new string[] {"kB", "kB", "kB", "kB", "kB", "kB", "kB", "kB", "gB", "gB"}; 
 		string[] otherInfo = new string[100];
-		string info = "";
+		//string info = "";
 		//if (Input.GetMouseButton(1))
 		//{
 		Ray clickPoint = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hitPoint;
 		
 		// See if the ray collided with an object
-		if (Physics.Raycast(clickPoint, hitPoint, 5.0f))
+		if (Physics.Raycast(clickPoint, out hitPoint, 5.0f))
 		{
 			// Make sure this object was the
 			// one that received the right-click

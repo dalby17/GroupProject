@@ -6,7 +6,7 @@ public class Timer : MonoBehaviour {
 
 	public float timeLeft = 120f;
 	public void Start () {
-				
+
 		}
 
 	// Update is called once per frame
@@ -15,6 +15,8 @@ public class Timer : MonoBehaviour {
 		Text text = GetComponent<Text> ();
 		int seconds = Mathf.FloorToInt (timeLeft);
 		text.text = seconds.ToString ();
+
+
 
 		if (timeLeft <= 0) 
 		{
