@@ -46,13 +46,12 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\IPlist.cs" />
      <Compile Include="Assets\IPspawn.cs" />
      <Compile Include="Assets\IPspawnV2.cs" />
-     <Compile Include="Assets\Scoreshifewjnsefj.cs" />
      <Compile Include="Assets\Spawn.cs" />
      <Compile Include="Assets\Timer.cs" />
      <Compile Include="Assets\Translate.cs" />
-     <Compile Include="Assets\score.cs" />
      <Compile Include="Assets\theScore.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>

@@ -4,7 +4,11 @@ using System.Collections;
 
 public class Timer : MonoBehaviour {
 
-	public float timeLeft = 120f;
+	//
+	//			SERIOUSLY! we should only create the timer and score after the game starts
+	//
+
+	public static float timeLeft = 120f;
 	public void Start () {
 
 		}
