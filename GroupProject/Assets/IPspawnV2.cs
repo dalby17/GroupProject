@@ -3,12 +3,17 @@ using System.Collections;
 
 public class IPspawnV2 : MonoBehaviour {
 	
+	bool toShow;
+	string address;
+	int capacity;
+	string capacityString;
+	string fileType;
 	
-
 	// Use this for initialization
 	void Start () {
-
-		string address = "";
+		toShow = true;
+		string[] ipAddresses = new string[100];
+		
 		for (int i = 0; i < 100; i++) {
 			for (int x = 0; x < 4; x++) {
 				int three = Random.Range(0, 1000);
@@ -26,32 +31,21 @@ public class IPspawnV2 : MonoBehaviour {
 					address = address + threeGroup;;
 				}
 			}
-			IPspawn.ipAddresses[i] = address;
+			ipAddresses[i] = address;
 			Debug.Log(address);
 			address = "";
 		}
 		
-		
-	}
-
-	void Update()
-	{
-		if (Input.GetMouseButton(1))
-			OnRightClick();
-	}
-	
-	// Update is called once per frame
-	void OnRightClick () {
 		string [] fileArray = new string[] {"kB", "kB", "kB", "kB", "kB", "kB", "kB", "kB", "gB", "gB"}; 
 		string[] otherInfo = new string[100];
-		//string info = "";
+		string info = "";
 		//if (Input.GetMouseButton(1))
 		//{
 		Ray clickPoint = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hitPoint;
 		
 		// See if the ray collided with an object
-		if (Physics.Raycast(clickPoint, out hitPoint, 5.0f))
+		if (Physics.Raycast(clickPoint, out hitPoint))
 		{
 			// Make sure this object was the
 			// one that received the right-click
@@ -59,18 +53,36 @@ public class IPspawnV2 : MonoBehaviour {
 			{
 				for (int j = 0; j< 100; j++)
 				{
-					int capacity = Random.Range(0,11);
-					string capacityString = capacity.ToString();
-					string fileType = fileArray[Random.Range(0,fileArray.Length-1)];
+					capacity = Random.Range(0,11);
+					capacityString = capacity.ToString();
+					fileType = fileArray[Random.Range(0,fileArray.Length-1)];
 					otherInfo[j] = capacityString + fileType;
-					Debug.Log(j);
-					Debug.Log(capacityString + fileType);
-					capacityString = "";
-					fileType = "";
+					//capacityString = "";
+					//fileType = "";
 				}
 			}
 		}
-		//}
-
+	}
+	
+	void Update()
+	{
+		if (Input.GetMouseButtonDown(1))
+			OnRightClick();
+	}
+	
+	// Update is called once per frame
+	void OnRightClick () {
+		
+		if (toShow == true)
+		{
+			Debug.Log("toShow = true " + capacityString + fileType);
+			toShow = false;
+		}
+		else if (toShow == false)
+		{
+			Debug.Log("toShow = false " + address);
+			toShow = true;
+		}
+		
 	}
 }
