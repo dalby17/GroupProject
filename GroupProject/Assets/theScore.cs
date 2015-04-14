@@ -13,6 +13,6 @@ public class theScore : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Text text = GetComponent<Text> ();
-		text.text = "Score:\n\n" + score.ToString ();
+		text.text = score.ToString ();
 	}
 }
