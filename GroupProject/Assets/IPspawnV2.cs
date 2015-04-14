@@ -8,16 +8,13 @@ public class IPspawnV2 : MonoBehaviour {
 	int capacity;
 	string capacityString;
 	string fileType;
-
-	string[] ipAddresses;
-
+	
 	// Use this for initialization
 	void Start () {
-		//i = 0;
 		toShow = true;
-		ipAddresses = new string[100];
+		string[] ipAddresses = new string[100];
 		
-		//for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 100; i++) {
 			for (int x = 0; x < 4; x++) {
 				int three = Random.Range(0, 1000);
 				string threeGroup = three.ToString();
@@ -34,10 +31,10 @@ public class IPspawnV2 : MonoBehaviour {
 					address = address + threeGroup;;
 				}
 			}
-			//ipAddresses[i] = address;
+			ipAddresses[i] = address;
 			Debug.Log(address);
-			//address = "";
-		//}
+			address = "";
+		}
 		
 		string [] fileArray = new string[] {"kB", "kB", "kB", "kB", "kB", "kB", "kB", "kB", "gB", "gB"}; 
 		string[] otherInfo = new string[100];
@@ -65,7 +62,6 @@ public class IPspawnV2 : MonoBehaviour {
 				}
 			}
 		}
-		//i = 0;
 	}
 	
 	void Update()
@@ -84,10 +80,8 @@ public class IPspawnV2 : MonoBehaviour {
 		}
 		else if (toShow == false)
 		{
-			//address = ipAddresses[i];
 			Debug.Log("toShow = false " + address);
 			toShow = true;
-
 		}
 		
 	}
