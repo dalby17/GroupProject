@@ -18,7 +18,7 @@ public class Timer : MonoBehaviour {
 		timeLeft -= Time.deltaTime;
 		Text text = GetComponent<Text> ();
 		int seconds = Mathf.FloorToInt (timeLeft);
-		text.text = seconds.ToString ();
+		text.text = "Time Left:\n\n" + seconds.ToString ();
 
 
 

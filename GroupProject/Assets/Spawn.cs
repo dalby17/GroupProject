@@ -17,9 +17,10 @@ public class Spawn : MonoBehaviour {
 	}
 
 	void spawn() {
-
-		Instantiate(box, new Vector3(-28, 30, 49), Quaternion.identity);
-		Instantiate(box, new Vector3(-9, 30, 49), Quaternion.identity);
-		Instantiate(box, new Vector3(10, 30, 49), Quaternion.identity);
+		/*
+		Instantiate(box, new Vector3(-28, 35, 49), Quaternion.identity);
+		Instantiate(box, new Vector3(-9, 35, 49), Quaternion.identity);
+		Instantiate(box, new Vector3(10, 35, 49), Quaternion.identity);
+		*/
 	}
 }

@@ -18,6 +18,6 @@ public class IPlist : MonoBehaviour {
 		}
 		
 		Text text = GetComponent<Text> ();
-		text.text = list.ToString ();
+		text.text = "Banned IPs:\n\n" + list.ToString ();
 	}
 }
