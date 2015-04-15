@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Translate : MonoBehaviour {
 
 	bool virus = false;
 	string IP = "IP";
-	string data = "";
+	string data = "data";
+	int click = 0;
+	public GameObject box;
 	// Use this for initialization
 	void Start () {
 		// is it a virus
@@ -15,10 +18,10 @@ public class Translate : MonoBehaviour {
 		}
 
 		// give ip address to box
-		if (virus != true && this.gameObject.name == "Box1(Clone)") {
+		if (virus != true && this.gameObject.name == "Button1(Clone)") {
 			// not a virus && first level
 			rand = Random.Range (0, 89);
-		}  else if (virus != true && this.gameObject.name != "Box1(Clone)") {
+		}  else if (virus != true && this.gameObject.name != "Button1(Clone)") {
 			// not a virus && not first level
 			// have to use other data, just a clue
 			rand = Random.Range (0, 99);
@@ -27,55 +30,63 @@ public class Translate : MonoBehaviour {
 			rand = Random.Range (90, 99);
 		}
 
-		IP = IPspawn.ipAddresses[rand];
+		IP = GameObject.FindGameObjectWithTag("Respawn").GetComponent<IPspawn>().get(rand, 1);
+
 
 		// add in other data for further levels
 		// level 2
-		if (this.gameObject.name == "Box2(Clone)" && virus != true) {
+		if (this.gameObject.name == "Button2(Clone)" && virus != true) {
 			rand = Random.Range (0, 16);
-			data = IPspawn.fileSize [rand];
+			data = GameObject.FindGameObjectWithTag("Respawn").GetComponent<IPspawn>().get(rand, 2);
 		} else {
 			rand = Random.Range (17, 19);
-			data = IPspawn.fileSize [rand];
+			data = GameObject.FindGameObjectWithTag("Respawn").GetComponent<IPspawn>().get(rand, 2);
 		}
 		// level 3
-		if (this.gameObject.name == "Box3(Clone)") {
+		if (this.gameObject.name == "Button3(Clone)") {
 			rand = Random.Range(0, 16);
-			data = IPspawn.fileType[rand];
+			data = GameObject.FindGameObjectWithTag("Respawn").GetComponent<IPspawn>().get(rand, 4);
 		} else {
 			rand = Random.Range (17, 19);
-			data = IPspawn.fileType [rand];
+			data = GameObject.FindGameObjectWithTag("Respawn").GetComponent<IPspawn>().get(rand, 4);
 		}
 		// level 4
-		if (this.gameObject.name == "Box4(Clone)") {
+		if (this.gameObject.name == "Button4(Clone)") {
 			rand = Random.Range(0, 16);
-			data = IPspawn.origin[rand];
+			data = GameObject.FindGameObjectWithTag("Respawn").GetComponent<IPspawn>().get(rand, 3);
 		} else {
 			rand = Random.Range (17, 19);
-			data = IPspawn.origin [rand];
+			data = GameObject.FindGameObjectWithTag("Respawn").GetComponent<IPspawn>().get(rand, 3);
 		}
-		// level 5
-		if (this.gameObject.name == "Box5(Clone)") {
-			rand = Random.Range(0, 19);
-			data = IPspawn.keywords[rand];
-		} else {
-			rand = Random.Range (17, 19);
-			data = IPspawn.keywords [rand];
-		}
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		// change text
+		if (click == 1 && this.gameObject.name != "Button1(Clone)") {
+			IP = data;
+		}
+		if (click == 2 || (click == 1 && this.gameObject.name == "Button1(Clone)")) {
+			Destroy (gameObject);
+		}
+
+		// display text
+		GetComponentInChildren<Text> ().text = IP;
+
 		// move box
-		float moveSpeed = 5f;
+		float moveSpeed = 30f;
 		transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
 
 		// if below screen:
 		//		update score
 		//		
-		if (transform.position.y <= -23) {
+		if (transform.position.y <= -20) {
 			if (virus == true) {
-				theScore.score -= 100;
+				theScore.score -= 200;
+				int x = Random.Range (0, 400);
+				int y = Random.Range (0, 200);
+				Instantiate(box, new Vector3(x, y, 49), Quaternion.identity);
 			} else {
 				theScore.score += 25;
 			}
@@ -86,5 +97,9 @@ public class Translate : MonoBehaviour {
 		if (Timer.timeLeft <= 0) {
 			Destroy (gameObject);
 		}
+	}
+
+	public void onClick(){
+		click++;
 	}
 }

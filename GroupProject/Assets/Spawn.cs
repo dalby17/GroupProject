@@ -18,8 +18,11 @@ public class Spawn : MonoBehaviour {
 
 	void spawn() {
 
-		Instantiate(box, new Vector3(-28, 30, 49), Quaternion.identity);
-		Instantiate(box, new Vector3(-9, 30, 49), Quaternion.identity);
-		Instantiate(box, new Vector3(10, 30, 49), Quaternion.identity);
+		GameObject button = Instantiate(box, new Vector3(325, 400, 49), Quaternion.identity) as GameObject;
+		button.transform.parent = GameObject.Find("Canvas").transform;
+		button = Instantiate(box, new Vector3(200, 400, 49), Quaternion.identity) as GameObject;
+		button.transform.parent = GameObject.Find("Canvas").transform;
+		button = Instantiate(box, new Vector3(75, 400, 49), Quaternion.identity) as GameObject;
+		button.transform.parent = GameObject.Find("Canvas").transform;
 	}
 }

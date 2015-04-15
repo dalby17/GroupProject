@@ -14,7 +14,8 @@ public class IPlist : MonoBehaviour {
 		
 		for (int i = 0; i < 10; i++) {
 			int x = i + 90;
-			list =  list + IPspawn.ipAddresses[x] + "\n";
+			string ip = GameObject.FindGameObjectWithTag("Respawn").GetComponent<IPspawn>().get(x, 1);
+			list =  list + ip + "\n";
 		}
 		
 		Text text = GetComponent<Text> ();
