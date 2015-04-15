@@ -8,7 +8,7 @@ public class Translate : MonoBehaviour {
 	string IP = "IP";
 	string data = "data";
 	int click = 0;
-	public GameObject box;
+	public GameObject popup;
 	// Use this for initialization
 	void Start () {
 		// is it a virus
@@ -84,9 +84,7 @@ public class Translate : MonoBehaviour {
 		if (transform.position.y <= -20) {
 			if (virus == true) {
 				theScore.score -= 200;
-				int x = Random.Range (0, 400);
-				int y = Random.Range (0, 200);
-				Instantiate(box, new Vector3(x, y, 49), Quaternion.identity);
+				makePopup ();
 			} else {
 				theScore.score += 25;
 			}
@@ -97,6 +95,13 @@ public class Translate : MonoBehaviour {
 		if (Timer.timeLeft <= 0) {
 			Destroy (gameObject);
 		}
+	}
+
+	void makePopup(){
+		int x = Random.Range (50, 600);
+		int y = Random.Range (50, 400);
+		GameObject button = Instantiate(popup, new Vector3(x, y, 50), Quaternion.identity) as GameObject;
+		button.transform.parent = GameObject.Find("popupList").transform;
 	}
 
 	public void onClick(){
